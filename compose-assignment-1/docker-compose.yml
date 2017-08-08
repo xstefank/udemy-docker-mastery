@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  drupal:
+    image: drupal
+    ports:
+      - '8080:80'
+        #volumes:
+        # - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: pass
