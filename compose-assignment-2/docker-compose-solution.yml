@@ -1,9 +1,9 @@
 version: '2'
 
 services:
-  custom-drupal:
+  drupal:
+    image: custom-drupal
     build: .
-
     ports:
       - "8080:80"
     volumes:
@@ -12,16 +12,16 @@ services:
       - drupal-sites:/var/www/html/sites
       - drupal-themes:/var/www/html/themes
   postgres:
-    image: postgres:9.6
+    image: postgres
     environment:
       - POSTGRES_PASSWORD=mypasswd
-    volumes:
-      - drupal-data:/var/lib/postgresql/data
+    volume:
+      drupal-data:/var/lib/postgresql/data
 
 volumes:
+  drupal-data:
   drupal-modules:
   drupal-profiles:
   drupal-sites:
   drupal-themes:
-  drupal-data:
 
